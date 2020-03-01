@@ -51,9 +51,6 @@ def genRandomPassword(lengthOfPass):
 
 def genRandomCustomPassword():
     totalCustomLength = 0
-    numOfUpperCaseLetters = 0
-    numOfLowerCaseLetters = 0
-    numOfNumbers = 0
 
     while(True):
         lengthOfPass = verifyIfInt("What is the length of your password: ")
