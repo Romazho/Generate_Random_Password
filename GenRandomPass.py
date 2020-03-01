@@ -49,14 +49,38 @@ def genRandomPassword(lengthOfPass):
     return passWord
 
 
-def genRandomCustomPassword(lengthOfPass):
-    # numOfLetters = input("How many letters would you like?")
-    # numOfUpperCaseLetters = input(
-    #     "How many UPPER case letters would you like?")
-    # numOfLowerCaseLetters = input(
-    #     "How many lower case letters would you like?")
-    # numOfNumbers = input("How many numbers would you like?")
-    pass
+def genRandomCustomPassword():
+    totalCustomLength = 0
+    numOfUpperCaseLetters = 0
+    numOfLowerCaseLetters = 0
+    numOfNumbers = 0
+
+    while(True):
+        lengthOfPass = verifyIfInt("What is the length of your password: ")
+
+        numOfUpperCaseLetters = verifyIfInt(
+            "How many UPPER case letters would you like? ")
+        numOfLowerCaseLetters = verifyIfInt(
+            "How many lower case letters would you like? ")
+        numOfNumbers = verifyIfInt("How many numbers would you like? ")
+
+        totalCustomLength += numOfUpperCaseLetters + \
+            numOfLowerCaseLetters + numOfNumbers
+
+        if(totalCustomLength > lengthOfPass):
+            print("The total length of you custum pass (" + str(totalCustomLength) +
+                  ") is longer than: " + str(lengthOfPass) + ". Try again.")
+        else:
+            break
+
+    password = genRandomPassword(lengthOfPass)
+    while(sum(c.isupper() for c in password) < numOfUpperCaseLetters or
+            sum(c.islower() for c in password) < numOfLowerCaseLetters or
+            sum(c.isdigit() for c in password) < numOfNumbers):
+        # print(password) #uncomment to debug
+        password = genRandomPassword(lengthOfPass)
+
+    return password
 
 
 def verifyClientInput(stringToPrint):
@@ -70,26 +94,20 @@ def verifyClientInput(stringToPrint):
     return clientAnswer
 
 
-def generatePassword(min, max):
-    lengthOfPass = random.randint(min, max)
+def generatePassword():
 
     isPassFullyCustom = verifyClientInput(
         "Would you like to fully customize your password? n/y: ")
 
     if(isPassFullyCustom == "N"):
+        clientRange = verifyMinMax()
+        lengthOfPass = random.randint(clientRange[0], clientRange[1])
         passWord = genRandomPassword(lengthOfPass)
+        print("The length of your password is: " + str(lengthOfPass))
     else:
-        passWord = genRandomCustomPassword(lengthOfPass)
+        passWord = genRandomCustomPassword()
 
-    print("The length of your password is: " + str(lengthOfPass))
     print("Password: " + passWord)
 
 
-def main():
-    # characters = string.ascii_letters + string.digits  # + string.punctuation
-
-    clientRange = verifyMinMax()
-    generatePassword(clientRange[0], clientRange[1])
-
-
-main()
+generatePassword()
