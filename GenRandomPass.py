@@ -86,7 +86,6 @@ def verifyClientInput(stringToPrint):
     while (clientAnswer != "N" and clientAnswer != "Y"):
         print("Invalid input!")
         clientAnswer = input(stringToPrint).upper()
-        print(clientAnswer)
 
     return clientAnswer
 
@@ -107,4 +106,21 @@ def generatePassword():
     print("Password: " + passWord)
 
 
-generatePassword()
+def main():
+
+    clientAnswer = "Y"
+
+    while (clientAnswer != "N"):
+
+        if(clientAnswer == "Y"):
+            generatePassword()
+        else:
+            print("Invalid input!")
+
+        clientAnswer = input(
+            "Would you like to generate another password? y/n :").upper()
+
+    print("Goodbye!")
+
+
+main()
