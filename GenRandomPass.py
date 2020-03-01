@@ -13,7 +13,7 @@ def verifyIfInt(stringToPrint):
             print("You entered a string, you should enter a number. Try again.")
             valToVerify = input(stringToPrint)
 
-    return valToVerify
+    return int(valToVerify)
 
 
 def verifyMinMax():
@@ -32,8 +32,8 @@ def verifyMinMax():
 
 
 def generatePassword(min, max):
-    print(min)
-    print(max)
+    lengthOfPass = number = random.randint(min, max)
+    print(lengthOfPass)
 
 
 def main():
