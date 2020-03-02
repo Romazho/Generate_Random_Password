@@ -74,7 +74,7 @@ def genRandomCustomPassword():
     while(sum(c.isupper() for c in password) < numOfUpperCaseLetters or
             sum(c.islower() for c in password) < numOfLowerCaseLetters or
             sum(c.isdigit() for c in password) < numOfNumbers):
-        print(password)  # uncomment to debug
+        # print(password)  # uncomment to debug
         password = genRandomPassword(lengthOfPass)
 
     return password
