@@ -65,7 +65,7 @@ def genRandomCustomPassword():
             numOfLowerCaseLetters + numOfNumbers
 
         if(totalCustomLength > lengthOfPass):
-            print("The total length of you custum pass (" + str(totalCustomLength) +
+            print("The total length of your custum pass (" + str(totalCustomLength) +
                   ") is longer than: " + str(lengthOfPass) + ". Try again.")
         else:
             break
@@ -118,7 +118,7 @@ def main():
             print("Invalid input!")
 
         clientAnswer = input(
-            "Would you like to generate another password? y/n :").upper()
+            "Would you like to generate another password? y/n: ").upper()
 
     print("Goodbye!")
 
