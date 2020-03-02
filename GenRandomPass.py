@@ -33,20 +33,20 @@ def verifyMinMax():
 
 
 def genRandomPassword(lengthOfPass):
-    passWord = ""
+    password = ""
     randomInt = random.randint(0, 2)
     for i in range(lengthOfPass):
         if(randomInt == 0):
-            passWord += secrets.choice(string.digits)
+            password += secrets.choice(string.digits)
             randomInt = random.randint(0, 2)
         elif(randomInt == 1):
-            passWord += secrets.choice(string.ascii_letters)
+            password += secrets.choice(string.ascii_letters)
             randomInt = random.randint(0, 2)
         else:
-            passWord += secrets.choice(string.punctuation)
+            password += secrets.choice(string.punctuation)
             randomInt = random.randint(0, 2)
 
-    return passWord
+    return password
 
 
 def genRandomCustomPassword():
@@ -74,7 +74,7 @@ def genRandomCustomPassword():
     while(sum(c.isupper() for c in password) < numOfUpperCaseLetters or
             sum(c.islower() for c in password) < numOfLowerCaseLetters or
             sum(c.isdigit() for c in password) < numOfNumbers):
-        # print(password) #uncomment to debug
+        print(password)  # uncomment to debug
         password = genRandomPassword(lengthOfPass)
 
     return password
@@ -98,12 +98,12 @@ def generatePassword():
     if(isPassFullyCustom == "N"):
         clientRange = verifyMinMax()
         lengthOfPass = random.randint(clientRange[0], clientRange[1])
-        passWord = genRandomPassword(lengthOfPass)
+        password = genRandomPassword(lengthOfPass)
         print("The length of your password is: " + str(lengthOfPass))
     else:
-        passWord = genRandomCustomPassword()
+        password = genRandomCustomPassword()
 
-    print("Password: " + passWord)
+    print("Password: " + password)
 
 
 def main():
